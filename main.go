@@ -22,18 +22,13 @@ func main() {
 	ca := &x509.Certificate{
 		SerialNumber: big.NewInt(2019),
 		Subject: pkix.Name{
-			Organization:  []string{"CA Company, INC."},
-			Country:       []string{"US"},
-			Province:      []string{""},
-			Locality:      []string{"San Francisco"},
-			StreetAddress: []string{"Golden Gate Bridge"},
-			PostalCode:    []string{"94016"},
+			CommonName:   "Test TSA Timestamping Root",
+			Organization: []string{"local"},
 		},
-		NotBefore:             time.Now(),
+		NotBefore:             time.Now().Add(-10 * time.Minute),
 		NotAfter:              time.Now().AddDate(10, 0, 0),
 		IsCA:                  true,
-		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageCodeSigning /*, x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth */},
-		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+		KeyUsage:              x509.KeyUsageCertSign | x509.KeyUsageCRLSign,
 		BasicConstraintsValid: true,
 		EmailAddresses:        []string{"iamca@example.com"},
 	}
