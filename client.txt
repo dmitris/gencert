@@ -1,0 +1,88 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2019 (0x7e3)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C = US, ST = , L = San Francisco, street = Golden Gate Bridge, postalCode = 94016, O = "CA Company, INC."
+        Validity
+            Not Before: Jul 14 22:04:30 2023 GMT
+            Not After : Jul 14 22:04:30 2033 GMT
+        Subject: C = US, ST = , L = San Francisco, street = Golden Gate Bridge, postalCode = 94016, O = "Company, INC."
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:bf:d9:8c:77:9c:02:c5:66:0f:2f:90:de:77:9f:
+                    20:51:9d:eb:76:fd:06:fd:d4:ab:3b:98:b7:b0:4a:
+                    56:3e:a6:c2:4c:6c:3e:c7:57:02:7a:67:a1:76:d1:
+                    2d:9c:09:a3:43:ff:81:bd:46:76:b4:a5:5b:ba:75:
+                    94:1e:56:57:da:4a:07:9c:bb:30:4f:54:81:87:23:
+                    11:85:42:5a:ce:e2:1e:25:77:19:5c:89:62:79:5b:
+                    ef:fb:61:0e:82:b7:fc:8a:00:33:10:c5:49:6c:21:
+                    10:7c:34:c7:35:6c:43:da:0c:14:2b:9a:93:f6:a0:
+                    4a:fc:d4:ed:e5:06:ed:ab:2b:bd:94:76:bc:cc:a6:
+                    41:ed:c2:c8:66:57:6c:10:76:82:61:17:8c:97:b3:
+                    b0:7a:07:a6:10:2e:de:2c:62:05:02:ab:d8:93:b4:
+                    07:0e:4b:1a:78:cc:c2:68:37:7b:62:7c:85:a1:28:
+                    a0:e5:f7:8b:5a:07:6d:89:37:62:60:b1:4a:a9:6b:
+                    b7:22:ba:af:34:85:0f:a6:c0:08:81:81:19:6c:e2:
+                    e3:39:05:32:4e:14:f7:be:b0:95:0b:cf:39:d3:7a:
+                    63:d1:ea:38:5c:2b:5d:64:e7:75:e0:b5:a5:96:ef:
+                    4e:4f:7f:00:8a:6c:05:b1:46:4a:4c:91:ec:79:0d:
+                    85:ec:c6:11:f4:5a:08:49:14:81:14:3f:d9:8b:7a:
+                    98:ae:6c:9f:b3:eb:8f:43:85:d4:f2:09:65:c5:1b:
+                    51:20:97:94:27:e5:fd:a8:ee:fe:c1:1f:ab:fd:30:
+                    95:05:42:54:95:1a:52:34:e8:2c:01:69:be:12:55:
+                    14:ed:69:9f:cc:49:16:f9:9a:1b:ea:0c:39:ef:af:
+                    6c:cb:c5:39:83:f6:8c:99:c1:23:7e:5c:20:e1:df:
+                    fe:7c:09:7c:41:a1:78:c6:1f:8a:b5:bc:a4:91:d5:
+                    ad:94:fe:d4:17:09:69:c7:ae:39:d8:68:1e:75:dc:
+                    a1:34:98:f8:88:87:a2:ee:f7:83:97:14:86:5e:f9:
+                    2c:c7:6b:8a:95:b8:73:0f:6a:59:54:4f:de:17:9b:
+                    e4:8f:83:58:b9:b0:f6:7a:5f:d0:89:0e:50:6f:e7:
+                    6a:8f:bd:53:81:dd:93:df:c5:6f:75:ca:40:ed:0e:
+                    6e:b8:1d:10:fd:3f:b0:cf:cf:66:67:2d:18:b6:aa:
+                    c7:b3:32:03:7f:c2:cf:2b:20:41:94:46:30:cb:40:
+                    42:52:08:78:47:65:08:61:a3:f1:37:dd:9f:00:ea:
+                    68:e7:af:fd:e1:22:6d:be:1d:15:c0:14:a8:bb:de:
+                    1d:13:4c:39:d2:24:b3:62:72:b3:41:bf:4a:79:bf:
+                    ec:76:d5
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Subject Key Identifier: 
+                01:02:03:04:06
+            X509v3 Subject Alternative Name: 
+                DNS:client.example.com, email:client@example.com, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        1e:e0:0b:e3:89:ac:34:8f:40:85:72:b8:42:dc:13:30:75:34:
+        b0:13:67:77:1b:04:47:fd:92:03:9d:92:82:fa:0d:dc:87:21:
+        d6:13:a7:83:5f:f0:4b:7d:4d:9e:80:91:3f:53:b7:2a:86:aa:
+        e7:3d:f9:49:7e:b4:6d:b4:5b:19:61:be:ed:d3:f4:32:76:97:
+        4c:58:0f:36:c8:f1:c5:4c:b2:49:c0:98:32:d8:cd:69:85:8b:
+        86:26:11:fa:db:40:8b:12:9a:7f:38:ab:a7:4e:67:1b:77:55:
+        f7:06:71:26:c5:69:bb:23:52:29:01:77:8b:ff:6e:3f:0f:c4:
+        73:a8:d2:08:b3:4c:03:41:63:dc:5e:e0:60:50:62:3c:17:9a:
+        31:46:c0:5e:44:4b:0c:fe:34:7e:f8:0e:23:6e:47:37:8b:f9:
+        cb:e7:0b:ef:aa:59:4b:55:51:74:1b:29:14:75:02:6f:73:c0:
+        f7:2e:d6:d9:93:ec:9e:e3:b9:ff:e0:fe:08:a7:3c:dc:9b:77:
+        f9:9b:a6:74:64:93:b3:7a:b1:2a:74:db:fe:39:e8:d8:1b:ac:
+        a0:16:3a:1c:93:76:c5:aa:78:d8:5d:50:26:2a:a9:90:1b:4a:
+        df:7a:38:81:a7:f5:f6:fb:ed:89:fb:cf:80:48:ce:53:26:b5:
+        aa:6f:eb:b2:a6:f3:68:10:dd:d7:54:28:2a:c9:c6:c4:1b:83:
+        29:0d:d0:9c:7a:70:92:cc:17:61:76:72:6d:9d:6e:76:95:63:
+        63:de:79:c0:3c:21:73:6a:11:37:c5:7b:be:f7:95:4d:25:e6:
+        57:2f:51:11:03:6c:c5:d6:ae:2c:8c:3c:01:43:c7:a0:22:d2:
+        d6:5c:71:6d:93:24:1f:f8:f4:36:59:7d:b0:d2:1c:a1:d3:84:
+        26:b5:78:93:9b:33:1f:f4:46:68:b4:f8:72:01:91:98:a8:a2:
+        74:df:20:75:df:11:6a:3b:e7:7a:e8:de:41:e3:a3:f9:8d:2c:
+        c1:00:76:79:2d:53:29:41:bb:cb:d1:00:d8:0f:8f:cd:a2:49:
+        5f:8b:8f:56:ce:d4:4c:d0:95:f5:08:a2:22:ee:83:fd:8a:73:
+        1e:3c:b3:60:e8:bd:f3:bb:3c:7f:23:82:05:6b:c0:05:aa:2d:
+        fb:80:ef:76:56:67:0b:1c:50:ed:78:cb:b0:ee:64:7d:18:3d:
+        4f:92:fb:12:9a:c9:28:05:0a:40:13:1d:bb:af:aa:a8:6f:73:
+        4c:00:80:8b:fe:df:58:0a:58:d9:bc:22:48:cf:cf:9e:d4:ec:
+        5f:82:17:2a:6f:7e:b3:b6:3f:a0:d2:2a:aa:75:05:8e:4a:82:
+        bc:03:0b:76:85:65:cc:3f

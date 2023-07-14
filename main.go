@@ -9,6 +9,7 @@ import (
 	"crypto/x509"
 	"crypto/x509/pkix"
 	"encoding/pem"
+	"fmt"
 	"log"
 	"math/big"
 	"net"
@@ -34,7 +35,7 @@ func main() {
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageCodeSigning /*, x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth */},
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 		BasicConstraintsValid: true,
-		EmailAddresses:        []string{"iamca@nosuchprovider.com"},
+		EmailAddresses:        []string{"iamca@example.com"},
 	}
 
 	// create our private and public key
@@ -65,8 +66,24 @@ func main() {
 		Type:  "RSA PRIVATE KEY",
 		Bytes: x509.MarshalPKCS1PrivateKey(caPrivKey),
 	})
+	if err := makeCertificate(ca, caPrivKey, "server"); err != nil {
+		log.Fatal(err)
+	}
+	if err := makeCertificate(ca, caPrivKey, "client"); err != nil {
+		log.Fatal(err)
+	}
+}
 
-	// set up our server certificate
+func makeCertificate(ca *x509.Certificate, caPrivKey *rsa.PrivateKey, outbase string) error {
+	var eku x509.ExtKeyUsage
+	if outbase == "server" {
+		eku = x509.ExtKeyUsageServerAuth
+	} else if outbase == "client" {
+		eku = x509.ExtKeyUsageClientAuth
+	} else {
+		log.Fatalf("makeCertificate: unknown outbase parameter %s, supported are 'serfer' or 'client'", outbase)
+	}
+	// set up the certificate template
 	cert := &x509.Certificate{
 		SerialNumber: big.NewInt(2019),
 		Subject: pkix.Name{
@@ -77,29 +94,29 @@ func main() {
 			StreetAddress: []string{"Golden Gate Bridge"},
 			PostalCode:    []string{"94016"},
 		},
-		IPAddresses:    []net.IP{net.IPv4(127, 0, 0, 1), net.IPv6loopback},
-		NotBefore:      time.Now(),
-		NotAfter:       time.Now().AddDate(10, 0, 0),
-		SubjectKeyId:   []byte{1, 2, 3, 4, 6},
-		ExtKeyUsage:    []x509.ExtKeyUsage{x509.ExtKeyUsageCodeSigning /* x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth */},
-		KeyUsage:       x509.KeyUsageDigitalSignature,
-		EmailAddresses: []string{"xyz@nosuchprovider.com"},
-		DNSNames:       []string{"next.hugeunicorn.xyz"},
+		IPAddresses:  []net.IP{net.IPv4(127, 0, 0, 1), net.IPv6loopback},
+		NotBefore:    time.Now(),
+		NotAfter:     time.Now().AddDate(10, 0, 0),
+		SubjectKeyId: []byte{1, 2, 3, 4, 6},
+		ExtKeyUsage:  []x509.ExtKeyUsage{eku},
+		// KeyUsage:       x509.KeyUsageDigitalSignature,
+		EmailAddresses: []string{outbase + "@example.com"},
+		DNSNames:       []string{outbase + ".example.com"},
 	}
 
 	certPrivKey, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	certBytes, err := x509.CreateCertificate(rand.Reader, cert, ca, &certPrivKey.PublicKey, caPrivKey)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	certFile, err := os.OpenFile("cert.pem", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	certFile, err := os.OpenFile(outbase+".pem", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer certFile.Close()
 	err = pem.Encode(certFile, &pem.Block{
@@ -107,10 +124,10 @@ func main() {
 		Bytes: certBytes,
 	})
 	if err != nil {
-		log.Fatalf("failed to encode cert: %v", err)
+		return fmt.Errorf("failed to encode cert: %v", err)
 	}
 
-	keyFile, err := os.OpenFile("key.pem", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0400)
+	keyFile, err := os.OpenFile(outbase+"-key.pem", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0600)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -122,4 +139,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to encode private key: %v", err)
 	}
+	return nil
 }
